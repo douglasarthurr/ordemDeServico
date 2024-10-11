@@ -2,10 +2,19 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Formulário de cadastro customizado
+Route::get('/cad', function () {
+    return view('cad'); // Esta view já está criada
+});
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
