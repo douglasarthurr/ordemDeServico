@@ -1,0 +1,103 @@
+body {
+    background-color: #f8f9fa;
+}
+.card {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.card-header {
+    background-color: #0275d8;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.card-body {
+    padding: 10px;
+}
+.btn-lg {
+    width: 100%;
+    background-color: #5cb85c;
+}
+.form-control {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+.form-group label {
+    font-weight: bold;
+}
+h5 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+.text-center {
+    text-align: center;
+}
+.form-check-input {
+    margin-left: 0;
+}
+.navbar-custom {
+    background-color: #0275d8;
+    padding: 5px;
+    color: white;
+}
+.navbar-custom .navbar-brand {
+    color: white;
+    font-weight: bold;
+}
+.navbar-custom .user-icon {
+    color: white;
+    float: right;
+}
+.btn-back {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #0275d8;
+}
+.hidden-section {
+    display: none;
+}
+/* Alinhamento dos checkboxes */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+}
+.form-check {
+    display: flex;
+    align-items: center;
+}
+.form-check-label {
+    margin-left: 5px;
+}
+ .back-arrow {
+position: fixed;
+bottom: 20px;
+left: 20px;
+width: 80px;
+cursor: pointer;
+display: inline-block; /* Para que o hover funcione corretamente */
+transition: transform 0.3s ease, opacity 0.3s ease; /* Suaviza a transição */
+}
+
+.back-arrow img {
+width: 40px;
+height: auto;
+}
+
+.back-arrow:hover {
+transform: scale(0.5); /* Diminui o tamanho em 50% */
+opacity: 0.8; /* Reduz a opacidade para 80% */
+}
+
+.bacck-arrow:hover {
+transform: scale(0.9); /* Diminui o tamanho em 50% */
+opacity: 0.8; /* Reduz a opacidade para 80% */
+}
