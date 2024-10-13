@@ -23,7 +23,7 @@
             <p>Faça o login para confirmarmos sua identidade.</p>
             
             <!-- Seta como botão -->
-            <a href="#" class="back-arrow">
+            <a href="/boasvindas" class="back-arrow">
                 <img src="{{ asset('images/seta.png') }}" alt="Voltar">
             </a>
         </div>
@@ -54,7 +54,7 @@
                                 <!-- Link para recuperar senha -->
                     @if (Route::has('password.request'))
                     <a class="link-recover" href="{{ route('password.request') }}">
-                        {{ __('Esqueceu a senha??') }}
+                        {{ __('Esqueceu a senha?') }}
                     </a>
                     @endif
                 </form>

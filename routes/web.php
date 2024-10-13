@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teste', function () {
+Route::get('/boasvindas', function () {
     return view('boas-vindas');
 });
 
