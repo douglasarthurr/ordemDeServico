@@ -1,138 +1,226 @@
 
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Jockey One', sans-serif;
-    }
-    .container {
-        display: flex;
-        height: 100vh;
-    }
-    .left-section {
-        flex: 1;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-    }
-    .right-section {
-        flex: 1;
-        background-color: #3399cc;
-        position:relative;
-        color: white;
-    }
-    .left-section h1 {
-        font-size: 3em;
-        color: #3399cc;
-    }
-    .left-section p {
-        font-size: 1.2em;
-        color: #3399cc;
-    }
-    .right-section .login-header {
-        font-size: 2em;
-        text-align: center;
-        position: absolute;
-        top: 20px;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-    }
-    .login-form-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .login-form {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-    }
-    .login-form input {
-        width: 465px;
-        padding: 10px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 9px;
-    }
-    .login-form input[type="submit"] {
-        background-color: #3399cc;
-        color: white;
-        font-size: 1.2em;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .login-form input[type="submit"]:hover {
-        background-color: #287a99;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jockey One', sans-serif;
+}
+.container {
+    display: flex;
+    height: 100vh;
+}
+.left-section {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.right-section {
+    flex: 1;
+    background-color: #3399cc;
+    position:relative;
+    color: white;
+}
+.left-section h1 {
+    font-size: 3em;
+    color: #3399cc;
+}
+.left-section p {
+    font-size: 1.2em;
+    color: #3399cc;
+}
+.right-section .login-header {
+    font-size: 2em;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.login-form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+.login-form input {
+    width: 465px;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 9px;
+}
+.login-form input[type="submit"] {
+    background-color: #3399cc;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.login-form input[type="submit"]:hover {
+    background-color: #287a99;
+}
 
-    /* Botão "Entrar" na parte inferior */
-    .bottom-button {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 250px;
-        padding: 10px;
-        background-color: white;
-        color: #3399cc;
-        text-align: center;
-        border-radius: 14px;
-        cursor: pointer;
-        text-decoration: none;
-        font-size: 1.2em;
-        transition: background-color 0.3s, color 0.3s;
-        margin-bottom: 50px;
-    }
-    .bottom-button:hover {
-        background-color: #287a99;
-        color: white;
-    }
+/* Botão "Entrar" na parte inferior */
+.bottom-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    padding: 10px;
+    background-color: white;
+    color: #3399cc;
+    text-align: center;
+    border-radius: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 50px;
+    font-family: 'Jockey One', sans-serif;
+}
+.bottom-button:hover {
+    background-color: #287a99;
+    color: white;
+}
 
-    .logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-    }
-    .logo img {
-        width: 50px;
-    }
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.logo img {
+    width: 50px;
+}
 
-    /* Estilos da seta de retorno como botão */
-    .back-arrow {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        width: 80px;
-        cursor: pointer;
-        display: inline-block; /* Para que o hover funcione corretamente */
-        transition: transform 0.3s ease, opacity 0.3s ease; /* Suaviza a transição */
-    }
-    
-    .back-arrow img {
-        width: 40px;
-        height: auto;
-    }
-    
-    .back-arrow:hover {
-        transform: scale(0.5); /* Diminui o tamanho em 50% */
-        opacity: 0.8; /* Reduz a opacidade para 80% */
-    }
+.logo:hover{
+    transform: scale(0.9); /* Diminui o tamanho em 50% */
+    opacity: 0.8; /* Reduz a opacidade para 80% */
+}
 
-    .link-recover {
-        margin-left: 0%;
-        display: block; /* Faz com que o link ocupe uma linha inteira */
-        margin-top: 8px; /* Adiciona espaço acima do link */
-        color: #000000; /* Cor padrão do texto */
-        text-align: left; /* Alinha o texto à esquerda */
+/* Estilos da seta de retorno como botão */
+.back-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 80px;
+    cursor: pointer;
+    display: inline-block; /* Para que o hover funcione corretamente */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Suaviza a transição */
+}
 
-    }
+.back-arrow img {
+    width: 40px;
+    height: auto;
+}
+
+.back-arrow:hover {
+    transform: scale(0.5); /* Diminui o tamanho em 50% */
+    opacity: 0.8; /* Reduz a opacidade para 80% */
+}
+
+.link-recover {
+    margin-left: 0%;
+    display: block; /* Faz com que o link ocupe uma linha inteira */
+    margin-top: 8px; /* Adiciona espaço acima do link */
+    color: #000000; /* Cor padrão do texto */
+    text-align: left; /* Alinha o texto à esquerda */
+
+}
+
+.link-recover:hover {
+    color: #1F2937; /* Cor ao passar o mouse */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+.container {
+    display: flex;
+    height: 100vh;
+}
+.left-section {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.right-section {
+    flex: 1;
+    background-color: #3399cc;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha o conteúdo no topo */
+    align-items: center; /* Centraliza horizontalmente */
+    padding-top: 20px; /* Adiciona um pouco de espaço no topo */
+}
+.right-section .buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Coloca os botões em coluna */
+    align-items: center; /* Centraliza os botões */
+    justify-content: center; /* Centraliza verticalmente */
+    height: 100%; /* Permite que a seção ocupe a altura total */
+}
+.right-section .buttons a {
+    display: block;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(217, 217, 217, 100%);
+    color: #3399cc;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3;
+    font-family: 'Jockey One', sans-serif;
+
+}
+.right-section .buttons a:hover {
+    background-color: #999;
+    color: white
+}
+h1 {
+    color: #3399cc;
+}
+.description {
+    color: rgb(85, 157, 206, 100%);
+    text-align: center;
+    font-family: 'Jockey One', sans-serif;
     
-    .link-recover:hover {
-        color: #1F2937; /* Cor ao passar o mouse */
-    }
-    
-    
+}
+.highlight {
+    color: green;
+}
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+}
+.login-header {
+    font-size: 1.5em; /* Aumenta o tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
+    font-family: 'Jockey One', sans-serif;
+
+}
+.logo-img {
+width: 80%; /* Reduz a largura da imagem em 20% */
+max-width: 150px; /* Limite máximo da largura, ajuste conforme necessário */
+}
+
