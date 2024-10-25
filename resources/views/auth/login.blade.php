@@ -1,47 +1,68 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quase Lá!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('site/app.css') }}">
+    
+    <!-- Adicione isso no cabeçalho para usar Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+</head>
+<body>
+    <div class="container">
+        <!-- Esquerda - Quase Lá! -->
+        <div class="left-section">
+            <div class="logo">
+                <img src="{{ asset('images/logoAzul.png') }}" alt="Logo">
+            </div>
+            <h1>QUASE LÁ!</h1>
+            <p>Faça o login para confirmarmos sua identidade.</p>
+            
+            <!-- Seta como botão -->
+            <a href="/boasvindas" class="back-arrow">
+                <img src="{{ asset('images/seta.png') }}" alt="Voltar">
+            </a>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <!-- Direita - Login -->
+        <div class="right-section">
+            <div class="login-header">Entrar</div> <!-- Cabeçalho "Entrar" fixo no topo -->
+            <div class="login-form-container"> <!-- Formulário centralizado -->
+                <form class="login-form" method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <!-- Email Address -->
+                    <input id="email" type="email" name="email" :value="old('email')" placeholder="E-mail" required autofocus>
+                    <!-- Error message for email -->
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                    <!-- Password -->
+                    <input id="password" type="password" name="password" placeholder="Senha" required autocomplete="current-password">
+                    <!-- Error message for password -->
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    <!-- Lembrar Senha -->
+                    {{-- <div class="block mt-4">
+                        <label for="remember_me" class="inline-flex items-center">
+                            <input id="remember_me" type="checkbox" class="rounded" name="remember">
+                            <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        </label>
+                    </div> --}}
+                                <!-- Link para recuperar senha -->
+                    @if (Route::has('password.request'))
+                    <a class="link-recover" href="{{ route('password.request') }}">
+                        {{ __('Esqueceu a senha?') }}
+                    </a>
+                    @endif
+                </form>
+            </div>
+
+            <!-- Botão "Entrar" branco na parte inferior -->
+            <a href="#" class="bottom-button" onclick="document.querySelector('.login-form').submit();">ENTRAR</a>
         </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</body>
+</html>
