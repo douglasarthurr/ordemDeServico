@@ -9,25 +9,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('boas-vindas');
 });
 
-Route::resource('criar_os', CriarOsController::class);
-Route::get('/CriarOs', [CriarOsController::class, 'index'])->name('CriarOs.index');
-Route::post('/CriarOs', [CriarOsController::class, 'store'])->name('CriarOs.store');
-
+Route::middleware('auth')->group(function () {
+    Route::resource('criar_os', CriarOsController::class);
+    Route::get('/CriarOs', [CriarOsController::class, 'index'])->name('CriarOs.index');
+    Route::post('/CriarOs', [CriarOsController::class, 'store'])->name('CriarOs.store');
+});
 
 // Formulário de cadastro customizado
 Route::get('/cad', function () {
     return view('cad'); // Esta view já está criada
 });
 
-
-
-
-Route::get('/boasvindas', function () {
-    return view('boas-vindas');
-});
 
 
 Route::get('/dashboard', function () {
