@@ -1,15 +1,34 @@
 <?php
 
+
+use App\Http\Controllers\CriarOsController;
+
 use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('criar_os', CriarOsController::class);
+Route::get('/CriarOs', [CriarOsController::class, 'index'])->name('CriarOs.index');
+Route::post('/CriarOs', [CriarOsController::class, 'store'])->name('CriarOs.store');
+
+
+// Formulário de cadastro customizado
+Route::get('/cad', function () {
+    return view('cad'); // Esta view já está criada
+});
+
+
+
+
 Route::get('/boasvindas', function () {
     return view('boas-vindas');
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -22,3 +41,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
