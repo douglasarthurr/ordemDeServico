@@ -17,7 +17,7 @@
                 <th>Prioridade</th>
                 <th>Data</th>
                 <th>Nome do Técnico</th>
-                <th>Ações</th> <!-- Adicionei um cabeçalho para as ações -->
+                <th>status</th> <!-- Adicionei um cabeçalho para as ações -->
             </tr>
         </thead>
         <tbody>
@@ -28,6 +28,7 @@
                     <td>{{ $ordem->prioridade }}</td>
                     <td>{{ $ordem->data_diagnostico }}</td>
                     <td>{{ $ordem->nome_tecnico }}</td>
+                    <td>{{ $ordem->status }}</td>
                     <td>
                         <a href="{{ route('ordens.show', $ordem->id) }}">Visualizar</a>
                         <a href="{{ route('ordens.edit', $ordem->id) }}">Editar</a>

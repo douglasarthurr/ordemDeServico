@@ -17,16 +17,12 @@ class Ordem extends Model
         "prioridade",
         "problemas",
         "teste_pecas",
-        // "finalizado",
-        // "sem_conserto",
-        // "aceito",
-        // "recusado",
         "valor_gasto",
         "mao_obra",
         "desconto",
         "valor_cobrado",
         "peca_trocada",
-        // "problema_solucionado",
         "nome_tecnico",
+        "status",
     ];
 }

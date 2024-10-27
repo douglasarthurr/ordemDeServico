@@ -29,6 +29,7 @@ class OrdemController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'nome_cliente' => 'required|string|max:255',
             'data_diagnostico' => 'required|date',
@@ -43,9 +44,11 @@ class OrdemController extends Controller
             'valor_cobrado' => 'nullable|string', 
             'peca_trocada' => 'nullable|string',
             'nome_tecnico' => 'nullable|string',
+            'status' => 'required|string',
             // Adicione outras validações conforme necessário
         ]);
     
+        
         Ordem::create($request->all());
     
         return redirect()->route('ordens.index')->with('success', 'Diagnóstico salvo com sucesso!');
@@ -75,18 +78,23 @@ class OrdemController extends Controller
     public function update(Request $request, Ordem $ordem)
     {
         $request->validate([
-            "nome_cliente" => 'required|string|max:255',
-            "data_diagnostico" => 'required|date',
-            "tipo_produto" => 'required|string|max:255',
-            "telefone" => 'required|string|max:255',
-            "prioridade" => 'required|string',
-            "problemas" => 'required|string',
-            "teste_pecas" => 'required|string',
-            "valor_gasto" => 'required|decimal:0,2',
-            "mao_obra" => 'required|decimal:0,2',
-            "peca_trocada" => 'required|string|max:255',
-            "nome_tecnico" => 'required|string|max:255',
+            'nome_cliente' => 'required|string|max:255',
+            'data_diagnostico' => 'required|date',
+            'tipo_produto' => 'required|string',
+            'telefone' => 'required|string|max:15',
+            'prioridade' => 'required|string',
+            'problemas' => 'nullable|string',
+            'teste_pecas' => 'nullable|string',
+            'valor_gasto' => 'nullable|numeric',
+            'mao_obra' => 'nullable|numeric',
+            'desconto' => 'nullable|numeric',
+            'valor_cobrado' => 'nullable|string', 
+            'peca_trocada' => 'nullable|string',
+            'nome_tecnico' => 'nullable|string',
+            'status' => 'required|string',
+            // Adicione outras validações conforme necessário
         ]);
+    
 
         $ordem->update($request->all());
 

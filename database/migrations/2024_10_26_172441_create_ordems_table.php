@@ -18,19 +18,15 @@ return new class extends Migration
             $table->string("tipo_produto");
             $table->string("telefone");
             $table->string("prioridade");
-            $table->string("problemas");
-            $table->string("teste_pecas");
-            // $table->string("finalizado");
-            // $table->string("sem_conserto");
-            // $table->string("aceito");
-            // $table->string("recusado");
-            $table->decimal("valor_gasto", 8,2);
-            $table->decimal("mao_obra", 8,2);
-            $table->decimal("desconto", 8,2);
-            $table->decimal("valor_cobrado", 8,2);
-            $table->string("peca_trocada");
-            // $table->string("problema_solucionado");
+            $table->string("problemas")->nullable();
+            $table->string("teste_pecas")->nullable();
+            $table->decimal("valor_gasto", 8,2)->nullable();
+            $table->decimal("mao_obra", 8,2)->nullable();
+            $table->decimal("desconto", 8,2)->nullable();
+            $table->decimal("valor_cobrado", 8,2)->nullable();
+            $table->string("peca_trocada")->nullable();
             $table->string("nome_tecnico");
+            $table->string("status");
             $table->timestamps();
         });
     }

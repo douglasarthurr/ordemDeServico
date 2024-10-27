@@ -60,6 +60,16 @@
                                 <option value="alta" {{ old('prioridade') == 'alta' ? 'selected' : '' }}>Alta</option>
                             </select>
                         </div>
+                        <div class="form-group mb-3">
+                            <div class="col">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" name="status" required>
+                                    <option value="finalizado" {{ old('status') == 'finalizado' ? 'selected' : '' }}>Finalizado</option>
+                                    <option value="em andamento" {{ old('status') == 'em_andamento' ? 'selected' : '' }}>Em andamento</option>
+                                    <option value="esperando" {{ old('status') == 'esperando' ? 'selected' : '' }}>Esperando</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -88,7 +98,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="valor_cobrado">Valor Cobrado</label>
-                                <input type="text" class="form-control" id="valor_cobrado" name="valor_cobrado" value="{{ old('valor_cobrado') }}" required>
+                                <input type="text" class="form-control" id="valor_cobrado" name="valor_cobrado" value="{{ old('valor_cobrado') }}" >
                             </div>
                             <div class="form-group mb-3">
                                 <label for="nome_tecnico">Nome do Técnico</label>
@@ -115,7 +125,31 @@
             <img src="{{ asset('images/seta.png') }}" alt="Voltar">
         </a>
     </div>
-
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery Mask Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Aplicando máscara para o telefone
+            $('#telefone').mask('(000) 0 0000-0000');
+
+            // Aplicando máscara de moeda com o prefixo "R$"
+            $('#valor_gasto, #mao_obra, #desconto, #valor_cobrado').mask('R$ #.##0,00', {reverse: true});
+
+            // Remover máscara antes de enviar o formulário
+            $('form').on('submit', function() {
+                // Remove a máscara do telefone
+                $('#telefone').val($('#telefone').val().replace(/\D/g, ''));
+                
+                // Remove a máscara e prefixo dos campos de valor
+                $('#valor_gasto, #mao_obra, #desconto, #valor_cobrado').each(function() {
+                    $(this).val($(this).val().replace(/\D/g, '')); // Remove todos os caracteres que não são números
+                });
+            });
+        });
+    </script>
 </body>
 </html>
