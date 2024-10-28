@@ -1,28 +1,34 @@
 <?php
 
 
-use App\Http\Controllers\CriarOsController;
 
 use App\Http\Controllers\ProfileController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\OrdemController;
 
 Route::get('/', function () {
     return view('boas-vindas');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::resource('criar_os', CriarOsController::class);
-    Route::get('/CriarOs', [CriarOsController::class, 'index'])->name('CriarOs.index');
-    Route::post('/CriarOs', [CriarOsController::class, 'store'])->name('CriarOs.store');
-});
+
 
 // Formulário de cadastro customizado
 Route::get('/cad', function () {
     return view('cad'); // Esta view já está criada
 });
 
+//ordens
+Route::middleware('auth')->group(function () {
+    Route::get('ordens', [OrdemController::class, 'index'])->name('ordens.index');
+    Route::get('ordens/criar', [OrdemController::class, 'create'])->name('ordens.create');
+    Route::post('ordens', [OrdemController::class, 'store'])->name('ordens.store');
+    Route::get('ordens/{ordem}', [OrdemController::class, 'show'])->name('ordens.show');
+    Route::get('ordens/{ordem}/editar', [OrdemController::class, 'edit'])->name('ordens.edit');
+    Route::put('ordens/{ordem}', [OrdemController::class, 'update'])->name('ordens.update');
+    Route::delete('ordens/{ordem}', [OrdemController::class, 'destroy'])->name('ordens.destroy');
+});
 
 
 Route::get('/dashboard', function () {
