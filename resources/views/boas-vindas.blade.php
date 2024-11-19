@@ -21,7 +21,7 @@
             <div class="login-header">Conecte-se</div>
             <div class="buttons">
                 <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">Cadastro</a>
+                <a href="/cad">Cadastro</a>
             </div>
         </div>
     </div>

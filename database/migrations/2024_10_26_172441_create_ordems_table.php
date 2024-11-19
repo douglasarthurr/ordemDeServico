@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("tipo_produto");
             $table->string("telefone");
             $table->string("prioridade");
+            // não obrigatório para inserir no bd
             $table->string("problemas")->nullable();
             $table->string("teste_pecas")->nullable();
             $table->decimal("valor_gasto", 8,2)->nullable();
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->decimal("desconto", 8,2)->nullable();
             $table->decimal("valor_cobrado", 8,2)->nullable();
             $table->string("peca_trocada")->nullable();
+            // não obrigatório para inserir no bd
             $table->string("nome_tecnico");
             $table->string("status");
             $table->timestamps();
