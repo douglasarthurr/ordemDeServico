@@ -9,6 +9,8 @@
 <body>
     <h1>OS</h1>
     <a href="{{ route('ordens.create') }}">Adicionar OS</a>
+    <a href="{{ route('ordens.relatorio') }}">Relatorio Mensal de OS</a>
+    <a href="{{ route('ordens.relatorio.anual') }}">Relatorio anual de OS</a>
     <table>
         <thead>
             <tr>
