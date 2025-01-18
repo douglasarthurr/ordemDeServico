@@ -41,5 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/tela-os', function () {
+    return view('tela-OS');
+})->middleware(['auth'])->name('tela-os');
+
 require __DIR__.'/auth.php';
 

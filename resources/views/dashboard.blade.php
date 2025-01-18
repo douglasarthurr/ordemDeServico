@@ -1,8 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Dashboard') }}
+            </h2>
+            <nav>
+                <a href="{{ route('tela-os') }}" class="inline-flex items-center px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">
+                    <i class="fas fa-clipboard-list mr-2"></i>
+                    Ordens de Serviço
+                </a>
+            </nav>
+        </div>
     </x-slot>
 
     <div class="py-12">
