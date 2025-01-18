@@ -189,4 +189,30 @@ class OrdemController extends Controller
 
         return view('ordens.relatorio', compact('relatorio', 'mes', 'ano'));
     }
+
+    /**
+ * Exibe o relatório anual.
+ */
+    public function relatorioAnual(Request $request)
+        {
+            $ano = $request->input('ano', now()->year);
+
+            // Filtra as ordens de serviço pelo ano
+            $ordens = Ordem::whereYear('data_diagnostico', $ano)->get();
+
+            // Prepara os dados do relatório
+            $dados = [
+                'ano' => $ano,
+                'total_ordens' => $ordens->count(),
+                'total_valor_gasto' => $ordens->sum('valor_gasto'),
+                'total_valor_cobrado' => $ordens->sum('valor_cobrado'),
+                'total_mao_obra' => $ordens->sum('mao_obra'),
+                'total_descontos' => $ordens->sum('desconto'),
+                'total_finalizadas' => $ordens->where('status', 'finalizada')->count(),
+                'total_em_andamento' => $ordens->where('status', 'em andamento')->count(),
+                'total_esperando' => $ordens->where('status', 'esperando')->count(),
+            ];
+
+            return view('ordens.relatorio_anual', compact('dados', 'ano'));
+        }
 }
