@@ -110,6 +110,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+
     <div class="header">
         <div class="logo">OS</div>
         <div class="user-icon">
@@ -150,13 +151,13 @@
                     <div class="os-item orange">
                         {{ ucfirst($ordem->status) }}
                     </div>
-                    <form action="{{ route('ordens.destroy', $ordem->id) }}" method="POST" 
-                          onsubmit="return confirm('Tem certeza que deseja excluir esta ordem?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="os-item red" style="width: 100%; border: none;">
-                            Excluir
-                        </button>
+                    <div class="os-item blue">
+                        <a href="{{ route('ordens.edit', $ordem->id) }}">Editar</a>
+                    </div>
+                    <form action="{{ route('ordens.destroy', $ordem->id) }}" method="POST" style="display:inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Excluir</button>
                     </form>
                 </div>
             @endforeach
