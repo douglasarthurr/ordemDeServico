@@ -22,7 +22,7 @@ Route::get('/cad', function () {
 
 
 //ordens
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('ordens', [OrdemController::class, 'index'])->name('ordens.index');
     Route::get('ordens/relatorio', [OrdemController::class, 'relatorio'])->name('ordens.relatorio');
     Route::get('ordens/relatorio/{mes}/{ano}', [OrdemController::class, 'atualizarRelatorioMensal']);
@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/dashboard', function () {
+Route::get('/index', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -48,9 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/tela-os', function () {
-    return view('tela-OS');
-})->middleware(['auth'])->name('tela-os');
+
 
 require __DIR__.'/auth.php';
 

@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ordens de Serviço</title>
     <link href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Jockey One', sans-serif;
             background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .header {
@@ -106,17 +115,40 @@
             color: #3498db;
             margin: 50px 0;
         }
+
+        .editar{
+            text-decoration: none;
+            color: white;
+        }
+
+        .excluir{
+            background-color: transparent;
+            border: none;
+            color: white;
+            padding-inline: 160px; 
+            padding-top: 20px; 
+            background-color: #e74c3c;
+            border-radius: 5px;
+            
+            
+        }
+
+        .excluir:hover{
+            background-color: #e15444;
+        }
+        
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-
-    <div class="header">
-        <div class="logo">OS</div>
-        <div class="user-icon">
-            <i class="fas fa-user"></i>
-        </div>
-    </div>
+    @include('layouts.navigation')
+    
 
     <div class="content">
         <div class="title">
@@ -131,8 +163,11 @@
                 <p>Não há ordens disponíveis</p>
             </div>
         @else
+        <div class="container">
+
+        
             @foreach($ordens as $ordem)
-                <div class="os-card" onclick="window.location.href='{{ route('ordens.show', $ordem->id) }}'">
+                <div class="os-card" >
                     <div class="os-item blue">
                         Código: {{ $ordem->id }}
                     </div>
@@ -145,22 +180,30 @@
                     <div class="os-item blue">
                         R$ {{ number_format($ordem->valor_cobrado, 2, ',', '.') }}
                     </div>
-                    <div class="os-item green">
+                    <div class="os-item blue">
                         {{ $ordem->tipo_produto }}
                     </div>
                     <div class="os-item orange">
                         {{ ucfirst($ordem->status) }}
                     </div>
-                    <div class="os-item blue">
-                        <a href="{{ route('ordens.edit', $ordem->id) }}">Editar</a>
+                    <div class="os-item blue" onclick="window.location.href='{{ route('ordens.edit', $ordem->id) }}'">
+                        <a class="editar" >Editar</a>
                     </div>
+                    <div class="os-item green" onclick="window.location.href='{{ route('ordens.show', $ordem->id) }}'">
+                        <a  href="{{ route('ordens.show', $ordem->id) }}">Visualizar</a>
+                    </div>
+                    
                     <form action="{{ route('ordens.destroy', $ordem->id) }}" method="POST" style="display:inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Excluir</button>
+                        @csrf
+                        @method('DELETE')
+                        <button class="excluir" type="submit">Excluir</button>
                     </form>
+                    
+                    
                 </div>
             @endforeach
+        
+        </div>
         @endif
 
         <a href="{{ route('ordens.create') }}" class="add-button">

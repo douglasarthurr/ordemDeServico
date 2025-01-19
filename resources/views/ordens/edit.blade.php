@@ -7,20 +7,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('site/appCriarOs.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <nav class="navbar navbar-custom" style="background-color:rgba(65, 157, 206, 100);">
-        <div class="container-fluid">
-            <a class="bacck-arrow" href="#">
-                <img src="{{ asset('images/logoBranca.png') }}" alt="Logopooo" style="width: 30px; height: auto;">
-            </a>
-            <div class="d-flex flex-grow-1 justify-content-end">
-                <div class="bacck-arrow">
-                    <i class="bi bi-person-fill" style="font-size: 30px; color: white;"></i>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('layouts.navigation')
 
     <div class="container">
         <h5 class="text-center">Diagnóstico Primário</h5>
@@ -138,14 +137,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
+            // Aplicando máscara para o telefone
             $('#telefone').mask('(000) 0 0000-0000');
+    
+            // Aplicando máscara de moeda com o prefixo "R$"
             $('#valor_gasto, #mao_obra, #desconto, #valor_cobrado').mask('R$ #.##0,00', {reverse: true});
-
+    
+            // Remover máscara antes de enviar o formulário
             $('form').on('submit', function() {
+                // Remove a máscara do telefone
                 $('#telefone').val($('#telefone').val().replace(/\D/g, ''));
+    
+                // Formatar os campos de valor para o formato correto (100.00)
                 $('#valor_gasto, #mao_obra, #desconto, #valor_cobrado').each(function() {
-                    $(this).val($(this).val().replace(/\D/g, ''));
+                    let valor = $(this).val().replace(/[^\d,]/g, ''); // Remove "R$" e outros caracteres não numéricos
+                    valor = valor.replace('.', '').replace(',', '.'); // Ajusta o separador decimal
+                    $(this).val(valor); // Define o valor ajustado
                 });
             });
         });
